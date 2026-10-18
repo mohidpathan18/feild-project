@@ -1,0 +1,15 @@
+# Netlify Configuration for GLOBAL EDU Flask Application
+
+[build]
+  command = "pip install -r requirements.txt"
+  functions = "netlify/functions"
+  publish = "static"
+
+[build.environment]
+  PYTHON_VERSION = "3.10"
+
+# Redirect all traffic to the serverless WSGI Flask handler
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/app"
+  status = 200
